@@ -17,26 +17,27 @@ namespace GestureIndicator
 
             AssetBundle assetBundle = AssetBundle.LoadFromMemory(tempStream.ToArray());
 
-            openHand = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/openhand.png"));
-            _null = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/null.png"));
-            fist = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/fist.png"));
-            thumbsUp = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/thumbsup.png"));
-            fingerGun = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/fingergun.png"));
-            point = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/point.png"));
-            victory = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/victory.png"));
-            rockAndRoll = ToSprite(assetBundle.LoadAsset("assets/mods/gestureindicator/textures/rockandroll.png"));
+            openHand = assetBundle.LoadAsset<Sprite>("OpenHand");
+            openHand.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            _null = assetBundle.LoadAsset<Sprite>("Null");
+            _null.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            fist = assetBundle.LoadAsset<Sprite>("Fist");
+            fist.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            thumbsUp = assetBundle.LoadAsset<Sprite>("ThumbsUp");
+            thumbsUp.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            fingerGun = assetBundle.LoadAsset<Sprite>("FingerGun");
+            fingerGun.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            point = assetBundle.LoadAsset<Sprite>("Point");
+            point.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            victory = assetBundle.LoadAsset<Sprite>("Victory");
+            victory.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            rockAndRoll = assetBundle.LoadAsset<Sprite>("RockAndRoll");
+            rockAndRoll.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
-            template = (GameObject)assetBundle.LoadAsset("assets/mods/gestureindicator/gestureindicator.prefab");
+            template = assetBundle.LoadAsset<GameObject>("GestureIndicator");
             template.hideFlags |= HideFlags.DontUnloadUnusedAsset;
         }
 
-        private static Sprite ToSprite(Object obj)
-        {
-            Texture2D texture = obj as Texture2D;
-            texture.wrapMode = TextureWrapMode.Clamp;
-            var sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(texture.width / 2, texture.height / 2), 100.0f, 0, SpriteMeshType.Tight, Vector4.zero, false);
-            sprite.hideFlags |= HideFlags.DontUnloadUnusedAsset;
-            return sprite;
-        }
+        
     }
 }

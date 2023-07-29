@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>9.0</LangVersion>
         <Version>1.0.1</Version>
@@ -9,25 +9,46 @@
     </PropertyGroup>
     <ItemGroup>
       <Reference Include="Assembly-CSharp">
-        <HintPath>..\..\..\ChilloutVR_Data\Managed\Assembly-CSharp.dll</HintPath>
+        <HintPath>F:\SteamLibrary\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Assembly-CSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="BTKUILib">
+        <HintPath>F:\SteamLibrary\steamapps\common\ChilloutVR\Mods\BTKUILib.dll</HintPath>
       </Reference>
       <Reference Include="MelonLoader">
-        <HintPath>..\..\..\MelonLoader\MelonLoader.dll</HintPath>
+        <HintPath>F:\SteamLibrary\steamapps\common\ChilloutVR\MelonLoader\net35\MelonLoader.dll</HintPath>
       </Reference>
       <Reference Include="UnityEngine.AssetBundleModule">
-        <HintPath>..\..\..\ChilloutVR_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+        <HintPath>F:\SteamLibrary\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
       </Reference>
       <Reference Include="UnityEngine.CoreModule">
-        <HintPath>..\..\..\ChilloutVR_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        <HintPath>F:\SteamLibrary\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       </Reference>
       <Reference Include="UnityEngine.UI">
-        <HintPath>..\..\..\ChilloutVR_Data\Managed\UnityEngine.UI.dll</HintPath>
+        <HintPath>F:\SteamLibrary\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\UnityEngine.UI.dll</HintPath>
       </Reference>
     </ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Assets\*" />
 	</ItemGroup>
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="xcopy &quot;$(ProjectDir)obj\Release\net472\GestureIndicator.dll&quot; &quot;$(SolutionDir)RELEASE\&quot; /K /D /H /Y /I" />
-    </Target>
+	<ItemGroup>
+	  <None Remove="Resources\palette.png" />
+	  <None Remove="Resources\Racoon_Logo_Single_White.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\palette.png" />
+	  <EmbeddedResource Include="Resources\Racoon_Logo_Single_White.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
 </Project>
