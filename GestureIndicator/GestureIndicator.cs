@@ -9,7 +9,7 @@ using BTKUILib.UIObjects;
 using BTKUILib;
 using System.Text.RegularExpressions;
 
-[assembly: MelonInfo(typeof(GestureIndicator.GestureIndicator), "GestureIndicator", "1.0.3", "ImTiara", "https://github.com/ImTiara/CVRMods")]
+[assembly: MelonInfo(typeof(GestureIndicator.GestureIndicator), "GestureIndicator", "1.1.0", "ImTiara,TheRaccoon", "https://github.com/Hobohan/CVRMods")]
 [assembly: MelonGame("Alpha Blend Interactive", "ChilloutVR")]
 
 namespace GestureIndicator
